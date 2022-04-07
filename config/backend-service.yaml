@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-backend
+spec:
+  selector:
+    app: sample-backend #app label from the pod
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80 #The service is accessible through port 80
+      targetPort: 8080 #Our application runs on 8080

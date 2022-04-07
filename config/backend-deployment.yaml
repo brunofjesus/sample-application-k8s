@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-backend #name must be unique per kind
+  labels:
+    app: sample-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-backend
+  template: #the pod template
+    metadata:
+      labels:
+        app: sample-backend
+    spec:
+      containers:
+        - name: sample-backend
+          image: brunofjesus/sample-backend:1.0
+          ports:
+            - containerPort: 80
