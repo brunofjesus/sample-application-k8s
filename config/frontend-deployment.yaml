@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-frontend #name must be unique per kind
+  labels:
+    app: sample-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-frontend
+  template: #the pod template
+    metadata:
+      labels:
+        app: sample-frontend
+    spec:
+      containers:
+        - name: sample-frontend
+          image: brunofjesus/sample-frontend:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
